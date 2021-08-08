@@ -25,7 +25,9 @@ router.get('/notes/:id', (req, res) => {
   });
 
   router.post('/notes', (req, res) => {
-    req.body.id = notes.length.toString();
+    const body = notes.length.toString();
+    console.log(body);
+    req.body.id = body;
   
     if (!validateNote(req.body)) {
       res.status(400).send('The note is not properly created.');
@@ -34,5 +36,6 @@ router.get('/notes/:id', (req, res) => {
       res.json(note);
     }
   });
+  
 
   module.exports = router;
